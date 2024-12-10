@@ -1,4 +1,4 @@
-module github.com/bennettzhu1/bazel_go_demo_dep
+module github.com/bennettzhu1/bazel_go_demo_dep/libs
 
 go 1.18
 

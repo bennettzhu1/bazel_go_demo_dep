@@ -5,6 +5,6 @@ import (
 )
 
 // WrapGreet returns a greeting message
-func WrapGreet() string {
-	return hello.Greet("World")
+func WrapGreet(audience string) string {
+	return hello.Greet(audience)
 }
