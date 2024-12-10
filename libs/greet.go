@@ -1,10 +1,10 @@
-package bazel_go_demo_dep
+package libs
 
 import (
 	"github.com/bennettzhu1/bazel_go_demo/libs/hello"
 )
 
-// Greet returns a greeting message
+// WrapGreet returns a greeting message
 func WrapGreet() string {
 	return hello.Greet("World")
 }
