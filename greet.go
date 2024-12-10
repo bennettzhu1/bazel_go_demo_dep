@@ -5,6 +5,6 @@ import (
 )
 
 // Greet returns a greeting message
-func Greet() string {
+func WrapGreet() string {
 	return hello.Greet("World")
 }
