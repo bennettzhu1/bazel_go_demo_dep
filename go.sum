@@ -1,0 +1,4 @@
+github.com/bennettzhu1/bazel_go_demo/libs/hello v1.0.0 h1:wG/MPwl2iNBtfMV8I/3tWshICLa6lmqkG5Ui3CmJyo8=
+github.com/bennettzhu1/bazel_go_demo/libs/hello v1.0.0/go.mod h1:YtxGwbp2jfiCBFgh/wIg1IOEuVLGENYacUFbk/rZZ7g=
+github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
+github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=

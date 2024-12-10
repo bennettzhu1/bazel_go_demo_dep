@@ -6,5 +6,5 @@ import (
 
 // Greet returns a greeting message
 func Greet() string {
-	return hello.Greet()
+	return hello.Greet("World")
 }
