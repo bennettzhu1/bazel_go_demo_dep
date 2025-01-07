@@ -1,5 +1,7 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
 load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_image_index", "oci_load", "oci_push")
+load("@rules_pkg//:pkg.bzl", "pkg_tar")
 
 # This command generates/updates BUILD files based on go source code. We're going to exclude all vendor
 # folders and sub-folders since we want gazelle to use the central go.mod
@@ -23,5 +25,16 @@ go_library(
 go_binary(
     name = "multi-module-demo",
     embed = [":multi-module-demo_lib"],
+    visibility = ["//visibility:public"],
+)
+
+pkg_tar(
+    name = "dbmate_tar",
+    srcs = [
+        "@com_github_amacneil_dbmate_v2//:v2",
+    ],
+    strip_prefix = "/",
+    package_dir = "usr/local/bin",
+    mode = "0755",
     visibility = ["//visibility:public"],
 )
