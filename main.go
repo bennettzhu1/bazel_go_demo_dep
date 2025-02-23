@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	// _ "crypto/tls"
-	// _ "crypto/tls/fipsonly"
 	"crypto/aes"
+	_ "crypto/tls/fipsonly"
 
 	"github.com/bennettzhu1/multi-module-demo/lib"
 	"github.com/pkg/errors"
@@ -17,11 +17,11 @@ func main() {
 
 	lib.PrintLibError()
 	key := []byte("example key 1234")
-    _, err = aes.NewCipher(key) // Use = instead of :=
-    if err != nil {
-        fmt.Println("FIPS compliance check failed:", err)
-    } else {
-        fmt.Println("FIPS compliance check passed.")
-    }
+	_, err = aes.NewCipher(key) // Use = instead of :=
+	if err != nil {
+		fmt.Println("FIPS compliance check failed:", err)
+	} else {
+		fmt.Println("FIPS compliance check passed.")
+	}
 
 }

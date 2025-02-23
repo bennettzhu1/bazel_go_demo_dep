@@ -10,9 +10,11 @@ GO_VERSION = "1.23.1"
 
 go_sdk = use_extension("@io_bazel_rules_go//go:extensions.bzl", "go_sdk")
 go_sdk.download(version = GO_VERSION)
+
 # https://github.com/bazel-contrib/rules_go/issues/3582
 # https://github.com/bazel-contrib/rules_go/blob/7f6a9bf5870f2b5ffbba1615658676dcabf9edc7/tests/core/boringcrypto/boringcrypto_test.go
-GO_VERSION_FIPS = "1.20.4"
+# GO_VERSION_FIPS = "1.20.4"
+GO_VERSION_FIPS = "1.23.0"
 
 go_sdk.download(
     experiments = ["boringcrypto"],
