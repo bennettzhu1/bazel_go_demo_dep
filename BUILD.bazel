@@ -12,6 +12,7 @@ gazelle(
 go_library(
     name = "multi-module-demo_lib",
     srcs = ["main.go"],
+    tags = ["manual"],
     importpath = "github.com/bennettzhu1/multi-module-demo",
     visibility = ["//visibility:private"],
     deps = [
@@ -23,13 +24,12 @@ go_library(
 go_binary(
     name = "multi-module-demo",
     embed = [":multi-module-demo_lib"],
-    goarch = "amd64",
-    goos = "linux",
+    tags = ["manual"],
     visibility = ["//visibility:public"],
 )
 
-go_cross_binary(
-    name = "multi-module-demo-fips",
-    sdk_version = "1.23.0",
-    target = ":multi-module-demo",
-)
+# go_cross_binary(
+#     name = "multi-module-demo-fips",
+#     sdk_version = "1.23.0",
+#     target = ":multi-module-demo",
+# )

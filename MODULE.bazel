@@ -3,7 +3,7 @@ module(
     repo_name = "com_github_bennettzhu1_bazel_go_demo_dep",
 )
 
-bazel_dep(name = "rules_go", version = "0.51.0", repo_name = "io_bazel_rules_go")
+bazel_dep(name = "rules_go", version = "0.53.0", repo_name = "io_bazel_rules_go")
 bazel_dep(name = "gazelle", version = "0.40.0", repo_name = "bazel_gazelle")
 
 GO_VERSION = "1.23.1"
@@ -17,6 +17,7 @@ go_sdk.download(version = GO_VERSION)
 GO_VERSION_FIPS = "1.23.0"
 
 go_sdk.download(
+    name = "go_fips",
     experiments = ["boringcrypto"],
     version = GO_VERSION_FIPS,
     # goarch = "arm64",

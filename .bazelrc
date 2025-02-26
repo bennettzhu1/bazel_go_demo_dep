@@ -1,0 +1,7 @@
+common --enable_bzlmod
+common --announce_rc
+common --show_timestamps
+common --keep_going
+common --show_progress_rate_limit=60
+
+build:fips --@io_bazel_rules_go//go/toolchain:sdk_name="go_fips"
