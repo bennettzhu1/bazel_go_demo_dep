@@ -9,12 +9,32 @@ gazelle(
     name = "gazelle",
 )
 
+constraint_setting(
+    name = "fips_requirement",
+    visibility = ["//visibility:public"],
+)
+
+constraint_value(
+    name = "fips_mode_enabled",
+    constraint_setting = ":fips_requirement",
+    visibility = ["//visibility:public"],
+)
+
+platform(
+    name = "fips_platform",
+    constraint_values = [
+        "//:fips_mode_enabled"
+    ],
+    visibility = ["//visibility:public"],
+)
+
 go_library(
     name = "multi-module-demo_lib",
     srcs = ["main.go"],
     tags = ["manual"],
     importpath = "github.com/bennettzhu1/multi-module-demo",
     visibility = ["//visibility:private"],
+    target_compatible_with = [":fips_mode_enabled"],
     deps = [
         "//lib",
         "@com_github_pkg_errors//:errors",
