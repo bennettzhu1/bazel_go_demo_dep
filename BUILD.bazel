@@ -23,7 +23,9 @@ constraint_value(
 platform(
     name = "fips_platform",
     constraint_values = [
-        "//:fips_mode_enabled"
+        "//:fips_mode_enabled",
+        "@platforms//os:macos",
+        "@platforms//cpu:aarch64",
     ],
     visibility = ["//visibility:public"],
 )
