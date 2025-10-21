@@ -3,7 +3,7 @@ load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 go_library(
     name = "main_lib",
     srcs = ["main.go"],
-    importpath = "github.com/bennettzhu1/bazel-go-demo-dep/cmd/main",
+    importpath = "github.com/bennettzhu1/bazel_go_demo_dep/cmd/main",
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_bennettzhu1_bazel_go_demo_dep_pkg_api//v1",
