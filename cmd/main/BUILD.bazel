@@ -7,7 +7,7 @@ go_library(
     visibility = ["//visibility:private"],
     deps = [
         "@com_github_bennettzhu1_bazel_go_demo_dep_pkg_api//v1",
-        "@com_github_bennettzhu1_bazel_go_demo_dep_pkg_utils//v1",
+        "@com_github_bennettzhu1_go_dep_consumer//consumer",
     ],
 )
 

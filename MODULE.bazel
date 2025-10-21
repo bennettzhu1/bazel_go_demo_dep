@@ -36,5 +36,6 @@ use_repo(
     "com_github_bennettzhu1_bazel_go_demo_dep_pkg_api",
     # External repo for pkg/utils
     "com_github_bennettzhu1_bazel_go_demo_dep_pkg_utils",
-    "com_github_bennettzhu1_cc_structs",
+    # External dependency - THE DIAMOND DEPENDENCY TEST!
+    "com_github_bennettzhu1_go_dep_consumer",
 )

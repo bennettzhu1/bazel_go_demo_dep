@@ -6,3 +6,10 @@ go_library(
     importpath = "github.com/bennettzhu1/bazel-go-demo-dep/pkg/api/v1",
     visibility = ["//visibility:public"],
 )
+
+# Alias for compatibility with gazelle-generated BUILD files
+alias(
+    name = "api",
+    actual = ":v1",
+    visibility = ["//visibility:public"],
+)

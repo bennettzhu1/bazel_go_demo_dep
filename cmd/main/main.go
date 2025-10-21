@@ -3,13 +3,13 @@ package main
 import (
 	"fmt"
 
+	"github.com/bennettzhu1/go-dep-consumer/consumer"
 	apiv1 "github.com/bennettzhu1/bazel-go-demo-dep/pkg/api/v1"
-	utilsv1 "github.com/bennettzhu1/bazel-go-demo-dep/pkg/utils/v1"
 )
 
 func main() {
-	fmt.Println("=== Bazel Go Subpackage Test ===")
-	fmt.Printf("API Version: %s\n", apiv1.GetAPIVersion())
-	fmt.Printf("Utils Version: %s\n", utilsv1.GetUtilsVersion())
-	fmt.Println("=================================")
+	fmt.Println("=== Diamond Dependency Test ===")
+	fmt.Printf("Direct from pkg/api:    %s\n", apiv1.GetAPIVersion())
+	fmt.Printf("Via go-dep-consumer:    %s\n", consumer.GetAPIVersionFromExternal())
+	fmt.Println("================================")
 }
