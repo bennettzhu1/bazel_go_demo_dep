@@ -1,4 +1,4 @@
-package v1
+package utils
 
 // GetUtilsVersion returns the current utils version string
 func GetUtilsVersion() string {
