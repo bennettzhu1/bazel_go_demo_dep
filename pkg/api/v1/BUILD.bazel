@@ -7,7 +7,6 @@ go_library(
     visibility = ["//visibility:public"],
 )
 
-# Alias for compatibility with gazelle-generated BUILD files
 alias(
     name = "api",
     actual = ":v1",

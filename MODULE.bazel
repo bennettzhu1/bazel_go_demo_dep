@@ -12,30 +12,15 @@ go_sdk = use_extension("@io_bazel_rules_go//go:extensions.bzl", "go_sdk")
 go_sdk.download(version = GO_VERSION)
 
 go_deps = use_extension("@bazel_gazelle//:extensions.bzl", "go_deps")
-
-# Scenario A & B: Use go.mod (with replace directives)
-# Comment this line and uncomment the go.work line for testing go.work
 go_deps.from_file(go_mod = "//:go.mod")
-
-# Scenario B & C: Use go.work (Go workspace file)
-# Uncomment this line and comment the go.mod line above for testing go.work
-# go_deps.from_file(go_work = "//:go.work")
-
 go_deps.gazelle_default_attributes(
     build_file_generation = "on",
     directives = [
         "gazelle:proto disable",
     ],
 )
-
-# These are the external repositories that Bazel creates for our subpackages
-# When a subpackage has its own go.mod, Bazel treats it as an external repo
 use_repo(
     go_deps,
-    # External repo for pkg/api (note the underscore conversion from hyphen)
     "com_github_bennettzhu1_bazel_go_demo_dep_pkg_api",
-    # External repo for pkg/utils
     "com_github_bennettzhu1_bazel_go_demo_dep_pkg_utils",
-    # External dependency - THE DIAMOND DEPENDENCY TEST!
-    "com_github_bennettzhu1_go_dep_consumer",
 )
