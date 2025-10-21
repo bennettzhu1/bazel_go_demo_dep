@@ -1,27 +1,6 @@
 load("@bazel_gazelle//:def.bzl", "gazelle")
-load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
 
-# This command generates/updates BUILD files based on go source code. We're going to exclude all vendor
-# folders and sub-folders since we want gazelle to use the central go.mod
-
-# gazelle:prefix github.com/bennettzhu1/multi-module-demo
+# gazelle:prefix github.com/bennettzhu1/bazel-go-demo-dep
 gazelle(
     name = "gazelle",
-)
-
-go_library(
-    name = "multi-module-demo_lib",
-    srcs = ["main.go"],
-    importpath = "github.com/bennettzhu1/multi-module-demo",
-    visibility = ["//visibility:private"],
-    deps = [
-        "//lib",
-        "@com_github_pkg_errors//:errors",
-    ],
-)
-
-go_binary(
-    name = "multi-module-demo",
-    embed = [":multi-module-demo_lib"],
-    visibility = ["//visibility:public"],
 )

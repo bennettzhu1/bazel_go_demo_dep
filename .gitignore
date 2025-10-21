@@ -11,3 +11,10 @@
 /.ijwb/
 /.aswb/
 /.clwb/
+
+# Test artifacts and backups
+*.bak
+*.backup
+
+# IDE
+.idea/
