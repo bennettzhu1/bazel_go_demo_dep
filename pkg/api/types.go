@@ -1,7 +1,7 @@
-package v1
+package api
 
 // GetAPIVersion returns the current API version string
 func GetAPIVersion() string {
-	return "API_VERSION_1.0"
+	return "🚀 LOCAL_MODIFIED 🚀"
 }
 
