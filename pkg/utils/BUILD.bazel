@@ -6,4 +6,3 @@ go_library(
     importpath = "github.com/bennettzhu1/bazel_go_demo_dep/pkg/utils",
     visibility = ["//visibility:public"],
 )
-
