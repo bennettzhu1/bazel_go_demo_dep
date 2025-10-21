@@ -1,10 +1,2 @@
-github.com/bennettzhu1/go-dep-consumer v0.0.0-20251021043001-b891b148d613 h1:P7E1kthIAa6ZxJwvUR2sRTvAwDYfJ5bu67/+z5JviSA=
-github.com/bennettzhu1/go-dep-consumer v0.0.0-20251021043001-b891b148d613/go.mod h1:uRzNTb74/u8iGaooBjkOsNpStnsju95Xf+sfsB4YIZU=
-github.com/bennettzhu1/go-dep-consumer v0.0.0-20251021051823-63530e754749 h1:JkL7NCP1jOsULj0HfsRH/ARk8Ypp8ES9mtt7vDALd7M=
-github.com/bennettzhu1/go-dep-consumer v0.0.0-20251021051823-63530e754749/go.mod h1:uRzNTb74/u8iGaooBjkOsNpStnsju95Xf+sfsB4YIZU=
-github.com/bennettzhu1/go-dep-consumer v0.0.0-20251021060352-3bfc3b177cd8 h1:vVicgtHoragAjRkb0FZ499k474heGGMh+R/PNvDCLuI=
-github.com/bennettzhu1/go-dep-consumer v0.0.0-20251021060352-3bfc3b177cd8/go.mod h1:TI0HplsLo5uqO4iI2QpKgdWCykXF9H9RfOAA2KYR24Y=
-github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
-github.com/google/uuid v1.3.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
-github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
-github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+github.com/bennettzhu1/go-dep-consumer v0.0.0-20251021061510-460c05c39440 h1:kjJNaghuBiWNaqcE2M97sngRCydTRQ14pobajIIaucg=
+github.com/bennettzhu1/go-dep-consumer v0.0.0-20251021061510-460c05c39440/go.mod h1:3n6ry3yB8HiCtmjIWSgNHo2cTYvDSHFAO1m3873OPVg=
