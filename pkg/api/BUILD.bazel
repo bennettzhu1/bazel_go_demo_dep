@@ -5,4 +5,5 @@ go_library(
     srcs = ["types.go"],
     importpath = "github.com/bennettzhu1/bazel_go_demo_dep/pkg/api",
     visibility = ["//visibility:public"],
+    deps = ["//pkg/utils"],
 )
