@@ -1,0 +1,16 @@
+load("@rules_helm//helm:defs.bzl", "helm_chart", "helm_template")
+
+helm_chart(
+    name = "chart",
+    chart = "Chart.yaml",
+    templates = glob(["templates/**/*.yaml"]),
+    values = "values.yaml",
+    visibility = ["//visibility:public"],
+)
+
+helm_template(
+    name = "rendered_chart",
+    chart = ":chart",
+    visibility = ["//visibility:public"],
+)
+
