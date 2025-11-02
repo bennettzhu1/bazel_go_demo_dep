@@ -1,5 +1,10 @@
 load("@rules_helm//helm:defs.bzl", "helm_chart", "helm_template")
 
+# //helm-chart:chart
+# //helm-chart:chart.install
+# //helm-chart:chart.push_images
+# //helm-chart:chart.uninstall
+# //helm-chart:chart.upgrade
 helm_chart(
     name = "chart",
     chart = "Chart.yaml",
@@ -8,9 +13,13 @@ helm_chart(
     visibility = ["//visibility:public"],
 )
 
+# kind delete clusters --all
+# bazel run //:load-image
+# kind create cluster
+# bazel run //helm-chart:chart.install
+
 helm_template(
     name = "rendered_chart",
     chart = ":chart",
     visibility = ["//visibility:public"],
 )
-

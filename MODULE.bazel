@@ -23,15 +23,14 @@ go_deps.gazelle_default_attributes(
     ],
 )
 
-# OCI (Docker) images
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
-
-# Pull distroless base image (minimal, secure base image for static Go binaries)
 oci.pull(
     name = "distroless_base",
-    image = "gcr.io/distroless/static-debian11",
-    tag = "latest",  # Or use digest for hermetic/reproducible builds
-    platforms = ["linux/amd64", "linux/arm64"],
+    image = "gcr.io/distroless/static",
+    platforms = [
+        "linux/amd64",
+        "linux/arm64/v8",
+    ],
+    tag = "latest",
 )
-
-use_repo(oci, "distroless_base")
+use_repo(oci, "distroless_base", "distroless_base_linux_amd64", "distroless_base_linux_arm64_v8")

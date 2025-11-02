@@ -41,10 +41,10 @@ oci_image(
 )
 
 # OCI tarball (for loading into Docker/Kind)
-# Usage: bazel run //:load-image
+# Usage: bazel run //:load_image
 # This loads the image directly into Docker/Kind
 oci_load(
-    name = "load-image",
+    name = "load_image",
     image = ":image",
     repo_tags = ["hello-k8s:latest"],
     visibility = ["//visibility:public"],

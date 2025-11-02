@@ -1,3 +1,4 @@
+// http://kind.sigs.k8s.io/docs/user/quick-start/#creating-a-cluster
 package main
 
 import (
@@ -8,7 +9,6 @@ import (
 )
 
 func main() {
-	// Get configuration from environment variables
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8080"
@@ -19,7 +19,6 @@ func main() {
 		appName = "hello-k8s"
 	}
 
-	// Simple HTTP handler
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		message := fmt.Sprintf("Hello from %s! 🚀\n", appName)
 		fmt.Fprintf(w, message)

@@ -467,7 +467,7 @@
     "@@rules_oci+//oci:extensions.bzl%oci": {
       "general": {
         "bzlTransitiveDigest": "YL2zQ2Ih2osbLNKqlBB6owMsIEpCaYD4LH/mjUQI9pk=",
-        "usagesDigest": "2JWc0YTETT9CJ+ku+aHedpGpTbToBA19ysGMXQ+6+GY=",
+        "usagesDigest": "+H9VLwr8xTirl4NFe0iCemMrqsg31tbkKu4SyJI4IaQ=",
         "recordedFileInputs": {},
         "recordedDirentsInputs": {},
         "envVariables": {},
@@ -477,22 +477,22 @@
             "attributes": {
               "scheme": "https",
               "registry": "gcr.io",
-              "repository": "distroless/static-debian11",
+              "repository": "distroless/static",
               "identifier": "latest",
               "platform": "linux/amd64",
               "target_name": "distroless_base_linux_amd64",
               "bazel_tags": []
             }
           },
-          "distroless_base_linux_arm64": {
+          "distroless_base_linux_arm64_v8": {
             "repoRuleId": "@@rules_oci+//oci/private:pull.bzl%oci_pull",
             "attributes": {
               "scheme": "https",
               "registry": "gcr.io",
-              "repository": "distroless/static-debian11",
+              "repository": "distroless/static",
               "identifier": "latest",
-              "platform": "linux/arm64",
-              "target_name": "distroless_base_linux_arm64",
+              "platform": "linux/arm64/v8",
+              "target_name": "distroless_base_linux_arm64_v8",
               "bazel_tags": []
             }
           },
@@ -502,11 +502,11 @@
               "target_name": "distroless_base",
               "scheme": "https",
               "registry": "gcr.io",
-              "repository": "distroless/static-debian11",
+              "repository": "distroless/static",
               "identifier": "latest",
               "platforms": {
                 "@@platforms//cpu:x86_64": "@distroless_base_linux_amd64",
-                "@@platforms//cpu:arm64": "@distroless_base_linux_arm64"
+                "@@platforms//cpu:arm64": "@distroless_base_linux_arm64_v8"
               },
               "bzlmod_repository": "distroless_base",
               "reproducible": true
@@ -895,7 +895,7 @@
           "explicitRootModuleDirectDeps": [
             "distroless_base",
             "distroless_base_linux_amd64",
-            "distroless_base_linux_arm64"
+            "distroless_base_linux_arm64_v8"
           ],
           "explicitRootModuleDirectDevDeps": [],
           "useAllRepos": "NO",
