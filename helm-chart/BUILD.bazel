@@ -25,4 +25,3 @@ helm_template(
     chart = ":chart",
     visibility = ["//visibility:public"],
 )
-

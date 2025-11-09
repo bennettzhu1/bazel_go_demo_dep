@@ -1,8 +1,11 @@
 # Build stage
-FROM golang:1.21-alpine AS builder
+FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
-COPY main.go .
+
+# Copy go module and source
+COPY go.mod ./
+COPY app/main.go ./
 
 # Build the binary
 RUN go build -o hello-k8s main.go
