@@ -2,9 +2,9 @@
 replicaCount: 2
 
 image:
-  repository: hello-k8s
-  tag: latest
-  pullPolicy: Never  # Use local image for Kind
+  repository: "{{//app:deploy_image_index}}"
+  tag: ""
+  pullPolicy: Always  # Pull from registry pushed by k8s_deploy
 
 appName: hello-k8s-helm
 

@@ -1,0 +1,80 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+load("@rules_oci//oci:defs.bzl", "oci_image", "oci_image_index", "oci_load")
+load("@rules_pkg//pkg:tar.bzl", "pkg_tar")
+load("@rules_gitops//gitops:defs.bzl", "k8s_deploy")
+load("//:transition.bzl", "multi_arch")
+load("@aspect_bazel_lib//lib:transitions.bzl", "platform_transition_filegroup")
+
+go_library(
+    name = "app_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/bennettzhu/k8s-basics",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "hello-k8s",
+    embed = [":app_lib"],
+    visibility = ["//visibility:public"],
+)
+
+pkg_tar(
+    name = "app_layer",
+    srcs = [":hello-k8s"],
+    package_dir = "/",
+)
+
+oci_image(
+    name = "image",
+    base = "@distroless_base",
+    entrypoint = ["/hello-k8s"],
+    tars = [":app_layer"],
+    visibility = ["//visibility:public"],
+)
+
+multi_arch(
+    name = "image_multiarch",
+    image = ":image",
+    platforms = [
+        "//:linux_x86_64_host",
+        "//:linux_aarch64_host",
+    ],
+)
+
+oci_image_index(
+    name = "image_index",
+    images = [":image_multiarch"],
+    visibility = ["//visibility:public"],
+)
+
+platform_transition_filegroup(
+    name = "image_filegroup",
+    srcs = [":image"],
+    target_platform = select({
+        "//:host_x86_64": "//:linux_x86_64_host",
+        "//:host_arm64": "//:linux_aarch64_host",
+    }),
+)
+
+oci_load(
+    name = "load_image",
+    image = ":image_filegroup",
+    repo_tags = ["hello-k8s:latest"],
+    visibility = ["//visibility:public"],
+)
+
+# k8s_deploy with Helm templates
+# Usage:
+#   bazel run //app:deploy.apply   - Push to registry and deploy
+#   bazel run //app:deploy.delete  - Remove from cluster
+k8s_deploy(
+    name = "deploy",
+    cluster = "kind-kind",
+    gitops = True,
+    image_registry = "localhost:5000/docker/dev/confluentinc",
+    images = [":image_index"],
+    manifests = ["//helm-chart:rendered_chart"],
+    namespace = "default",
+    visibility = ["//visibility:public"],
+)
+
