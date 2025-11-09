@@ -2,7 +2,7 @@
 replicaCount: 2
 
 image:
-  repository: "{{//app:deploy_image_index}}"
+  repository: "{{//app:image_index}}"
   tag: ""
   pullPolicy: Always  # Pull from registry pushed by k8s_deploy
 

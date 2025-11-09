@@ -10,17 +10,24 @@ bazel_dep(name = "rules_oci", version = "2.2.0")
 bazel_dep(name = "rules_pkg", version = "1.0.1")
 bazel_dep(name = "gazelle", version = "0.45.0", repo_name = "bazel_gazelle")
 bazel_dep(name = "aspect_bazel_lib", version = "2.9.4")
-
 bazel_dep(name = "rules_gitops", version = "0.32.13")
 git_override(
     module_name = "rules_gitops",
     commit = "5c21bfb51d57a2ee192242f053c26845c0f67348",
     remote = "https://github.com/fasterci/rules_gitops",
+    patches = [
+        "//:rules_gitops.patch",
+    ],
+    patch_strip = 1,
 )
 
-kustomize = use_extension("@rules_gitops//gitops:extensions.bzl", "kustomize")
-kustomize.kustomize_toolchain()
-use_repo(kustomize, "kustomize_bin")
+kubeconfig = use_repo_rule("@rules_gitops//skylib:k8s.bzl", "kubeconfig")
+
+kubeconfig(
+    name = "k8s_test",
+    cluster = "kind-kind",
+    use_host_config = True,
+)
 
 GO_VERSION = "1.24.7"
 
@@ -35,6 +42,7 @@ go_deps.gazelle_default_attributes(
         "gazelle:proto disable",
     ],
 )
+use_repo(go_deps, "com_github_fasterci_rules_gitops_client")
 
 oci = use_extension("@rules_oci//oci:extensions.bzl", "oci")
 oci.pull(
